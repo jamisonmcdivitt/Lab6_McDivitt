@@ -5,7 +5,6 @@ def menu():
     print('Menu\n--------')
     print('1. Encode\n2. Decode\n3. Quit\n')
 
-
 # Encodes the user input string
 def encode(password):
     encoded_password = ''
@@ -14,10 +13,12 @@ def encode(password):
         encoded_password += encoded_digit
     return encoded_password
 
-
 # Decodes the user input string
-def decoder(password):
-    pass
+def decode(password):
+  decoded_password = ''
+  for number in password:
+    decoded_password += str((int(number)-3) % 10)
+  return decoded_password
 
 
 def main():
@@ -41,8 +42,9 @@ def main():
             continue
 
         elif user_selection == 2:
-            decoded_password = decode(user_password)
-            print(f'The encoded password is {encoded_password}, and the original password is {decoded_password}')
+            decoded_password = decode(encoded_password)
+            print(f'The encoded password is {encoded_password}, and the original password is {decoded_password}.')
+            print()
             continue
 
         elif user_selection == 3:
@@ -51,7 +53,6 @@ def main():
         else:
             print('Not a valid selection. Please select a new menu option')
             continue
-
 
 if __name__ == "__main__":
     main()
